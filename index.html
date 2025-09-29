@@ -10,7 +10,7 @@
         .header { display: flex; justify-content: center; align-items: center; position: relative; gap: 10px; }
         h1 { text-align: center; color: #333; margin: 20px 0; }
 
-        /* ▼▼▼ 「使い方」のスタイル ▼▼▼ */
+        /* --- 「使い方」のスタイル --- */
         .how-to-use {
             margin: 0 auto 20px auto;
             border: 1px solid #ccc;
@@ -26,10 +26,10 @@
         .how-to-use div {
             padding: 0 15px 15px 15px;
             border-top: 1px solid #eee;
+            line-height: 1.6;
         }
-        .how-to-use ul {
-            margin: 0;
-            padding-left: 20px;
+        .how-to-use p {
+            margin: 10px 0;
         }
 
         /* --- ボタンのスタイル --- */
@@ -66,8 +66,9 @@
         .skill-list label { display: flex; align-items: center; flex-grow: 1; cursor: pointer; }
         .skill-list input[type="checkbox"] { margin-right: 10px; }
         
-        /* --- 特殊技能欄 --- */
+        /* --- 特殊な技能欄のスタイル --- */
         .critical-counter { width: 40px; text-align: right; margin-right: 8px; flex-shrink: 0; }
+        .mythos-start-input { width: 40px; text-align: right; }
         .growth-input { width: 50px; text-align: right; }
         .skill-specialization { border: 1px solid #ccc; padding: 4px; margin-left: 8px; width: 100px; }
         .custom-skill-input { border: 1px solid #ccc; padding: 4px; flex-grow: 1; margin-right: 10px; min-width: 50px; }
@@ -94,7 +95,7 @@
             h2 { font-size: 20px; }
         }
         
-        /* --- PCなど広い画面用の基本スタイル --- */
+        /* --- PCなどの広い画面用の基本スタイル --- */
         @media (min-width: 800px) {
             body { max-width: 95%; }
             #mode-toggle-button { display: inline-block; }
@@ -115,10 +116,10 @@
             padding-bottom: 15px;
         }
         
-        /* ワイドモードでウィンドウ幅に合わせるがONの時 */
+        /* ワイドモードでフィット表示がONの時 */
         body.wide-mode-on.fit-mode-on #sheets-container {
             grid-auto-flow: row;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             overflow-x: hidden;
         }
     </style>
@@ -134,24 +135,19 @@
     </div>
     
     <details class="how-to-use">
-        <summary>🎲このツールの使い方</summary>
+        <summary>▼ このツールの使い方</summary>
         <div>
-            <ul>
-                <li><strong>このツールについて:</strong> 初回成功カウントをログ出力で数えるのが面倒だったので、その場その場で記録できるよう作りました。もちろん初期値成功/決定的成功のみカウントのハウスルールでも使用できます。</li>
-                <li><strong>シート追加:</strong> 上部の「＋」ボタンで新しいタブを追加できます。</li>
-                <li><strong>シート削除:</strong> 各タブの右側にある「×」ボタンで、そのシートを削除できます（確認メッセージが表示されます）。</li>
-                <li><strong>名前の変更:</strong> 探索者名（タブまたはシート上部）をダブルクリックすると、名前を編集できます。</li>
-                <li><strong>シートのリセット:</strong> 各シートの右上にあるリセットボタンで、その探索者の入力内容を全て初期化できます。</li>
-                <li><strong>カスタム技能の追加:</strong> 各技能カテゴリの末尾にある入力欄に技能名を入れて「＋」ボタンを押すと、自由な技能を追加できます。サプリ追加技能、7版技能などが必要な時に使ってください。</li>
-                <li><strong>表示モード切替 (PC):</strong> 広い画面で見ると、タイトル横に表示モードを切り替えるボタンが表示されます。
-                    <ul>
-                        <li><strong>ワイドモード:</strong> 複数のチェックシートを同時に並べて表示します。サマリー欄は非表示になります。</li>
-                        <li><strong>通常表示:</strong> 従来通り、タブで探索者を切り替えて表示します。</li>
-                    </ul>
-                </li>
-                <li><strong>レイアウト切替 (ワイドモード時):</strong> ワイドモード中に、シートの並べ方を「横スクロール」と「ウィンドウ幅に合わせる（折り返し）」で切り替えられます。</li>
-                <li><strong>サマリー出力 (通常表示時):</strong> ページ最下部のテキストエリアに、現在開いているタブの経験ロール情報が自動でまとめられます。「クリップボードにコピー」ボタンでコピーできます。</li>
-            </ul>
+            <p><strong>このツールについて:</strong> 初回成功カウントをログ出力で数えるのが面倒だったので、その場その場で記録できるよう作りました。もちろん初期値成功/決定的成功のみカウントのハウスルールでも使用できます。</p>
+            <p><strong>シート追加:</strong> 上部の「＋」ボタンで新しいタブを追加できます。</p>
+            <p><strong>シート削除:</strong> 各タブの右側にある「×」ボタンで、そのシートを削除できます（確認メッセージが表示されます）。</p>
+            <p><strong>名前の変更:</strong> 探索者名（タブまたはシート上部）をダブルクリックすると、名前を編集できます。</p>
+            <p><strong>シートのリセット:</strong> 各シートの右上にあるリセットボタンで、その探索者の入力内容を全て初期化できます。</p>
+            <p><strong>カスタム技能の追加:</strong> 各技能カテゴリの末尾にある入力欄に技能名を入れて「＋」ボタンを押すと、自由な技能を追加できます。サプリ追加技能、7版技能などが必要な時に使ってください。</p>
+            <p><strong>表示モード切替 (PC):</strong> 広い画面で見ると、タイトル横に表示モードを切り替えるボタンが表示されます。</p>
+            <p><strong>ワイドモード:</strong> 複数のチェックシートを同時に並べて表示します。サマリー欄は非表示になります。</p>
+            <p><strong>通常表示:</strong> 従来通り、タブで探索者を切り替えて表示します。</p>
+            <p><strong>レイアウト切替 (ワイドモード時):</strong> ワイドモード中に、シートの並べ方を「横スクロール」と「ウィンドウ幅に合わせる（折り返し）」で切り替えられます。</p>
+            <p><strong>サマリー出力 (通常表示時):</strong> ページ最下部のテキストエリアに、現在開いているタブの経験ロール情報が自動でまとめられます。「クリップボードにコピー」ボタンでコピーできます。</p>
         </div>
     </details>
 
@@ -323,6 +319,7 @@
                     if (checkbox && checkbox.checked) checkedSkills.push(`・${skillName}`);
                 }
             });
+            const mythosStart = sheet.querySelector('.mythos-start-input').value || '0';
             const mythosGrowth = sheet.querySelector('.growth-input').value || '0';
             const memoContent = sheet.querySelector('.memo-area').value.trim();
             let summaryText = `■探索者名： ${charName}\n\n`;
@@ -330,7 +327,7 @@
             summaryText += criticalSkills.length > 0 ? criticalSkills.join('\n') + '\n\n' : 'なし\n\n';
             summaryText += '▼チェックした技能（初期値成功含む）\n';
             summaryText += checkedSkills.length > 0 ? checkedSkills.join('\n') + '\n\n' : 'なし\n\n';
-            summaryText += `▼クトゥルフ神話技能の成長： ${mythosGrowth}%\n\n`;
+            summaryText += `▼クトゥルフ神話技能： ${mythosStart} + ${mythosGrowth}%\n\n`;
             summaryText += '▼自由メモ欄\n';
             summaryText += memoContent !== '' ? memoContent : 'なし';
             summaryOutput.value = summaryText;
@@ -353,7 +350,9 @@
                 <div class="skill-category"><h3>探索技能</h3><ul class="skill-list"><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 応急手当</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 鍵開け</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 隠す</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 隠れる</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 聞き耳</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 忍び歩き</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 写真術</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 精神分析</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 追跡</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 登攀</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 図書館</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 目星</label></li><li><input type="text" class="custom-skill-input" placeholder="技能名を入力"><button class="add-skill-button">+</button></li></ul></div>
                 <div class="skill-category"><h3>行動技能</h3><ul class="skill-list"><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 運転</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 機械修理</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 重機械操作</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 乗馬</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 水泳</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 製作</label><input type="text" class="skill-specialization" placeholder="専門分野"></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 操縦</label><input type="text" class="skill-specialization" placeholder="専門分野"></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 跳躍</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 電気修理</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> ナビゲート</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 変装</label></li><li><input type="text" class="custom-skill-input" placeholder="技能名を入力"><button class="add-skill-button">+</button></li></ul></div>
                 <div class="skill-category"><h3>交渉技能</h3><ul class="skill-list"><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 言いくるめ</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 信用</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 説得</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 値切り</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 母国語</label></li><li><input type="text" class="custom-skill-input" placeholder="技能名を入力"><button class="add-skill-button">+</button></li></ul></div>
-                <div class="skill-category"><h3>知識技能</h3><ul class="skill-list"><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 医学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> オカルト</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 化学</label></li><li><span>クトゥルフ神話</span><div><input type="number" class="growth-input" min="0" placeholder="0">% 成長</div></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 芸術</label><input type="text" class="skill-specialization" placeholder="専門分野"></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 経理</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 考古学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> コンピューター</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 心理学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 人類学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 生物学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 地質学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 電子工学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 天文学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 博物学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 物理学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 法律</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 薬学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 歴史</label></li><li><input type="text" class="custom-skill-input" placeholder="技能名を入力"><button class="add-skill-button">+</button></li></ul></div>
+                <div class="skill-category"><h3>知識技能</h3><ul class="skill-list"><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 医学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> オカルト</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 化学</label></li>
+                    <li><span>クトゥルフ神話</span><div><input type="number" class="mythos-start-input" min="0" placeholder="開始値"> + <input type="number" class="growth-input" min="0" placeholder="0">% 成長</div></li>
+                <li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 芸術</label><input type="text" class="skill-specialization" placeholder="専門分野"></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 経理</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 考古学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> コンピューター</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 心理学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 人類学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 生物学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 地質学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 電子工学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 天文学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 博物学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 物理学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 法律</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 薬学</label></li><li><input type="number" class="critical-counter" min="0" placeholder="0"><label><input type="checkbox"> 歴史</label></li><li><input type="text" class="custom-skill-input" placeholder="技能名を入力"><button class="add-skill-button">+</button></li></ul></div>
                 <div class="skill-category"><h3>自由メモ欄</h3><textarea class="memo-area" placeholder="ここに自由にメモを記入できます"></textarea></div>`;
             
             const initialSheet = document.getElementById('char1');
@@ -379,5 +378,3 @@
     </script>
 </body>
 </html>
-
-
